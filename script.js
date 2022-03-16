@@ -33,6 +33,26 @@ buttonHard.addEventListener('click', ()=> createElementsInGrid(49, 'hard'));
 
 
 
+// generare 16 numeri casuali da 1 a totalCells
+function generateBombs(max){
+    const positions = [];
+    while(positions.length < 16){
+       const position = generateRandomNumber(1 , max);
+ 
+       //i numeri nella lista non possono essere dupicati
+       if(!positions.includes(position)){
+          positions.push(position);
+       }
+    }
+    return positions;
+ 
+ }
+
+ function generateRandomNumber( min , max ) {
+    const range = max - min +1;
+    return Math.floor(Math.random()*range) + min;
+ }
+
 function createElementsInGrid(totalCells, className){
     const grid = document.getElementById ('grid');
 
