@@ -66,7 +66,8 @@ function startGame (totalCells, className){
 //aggiungo un if che va a verificare se il contatore è uguale a (numero di celle - bombposition.length (16)). se la condizione è vera allora l'utente avrà vinto e verrà comunicato il punteggio!
              if(contatore ===(totalCells-bombPositions.length)){
                 alert('Hai vinto, hai totalizzato : ' + contatore + 'punti!');
-                
+                //disable style css per evitare che si possa cliccare su altri quadrati quando l'utente ha vinto
+                cell.classList.toggle('disable');
              }
           }
          
@@ -85,7 +86,8 @@ function endGame (bombPositions, totalCells){
    for ( let i=1 ; i<= totalCells; i++){
       let id= 'cell-' + i;
       let cell = document.getElementById(id);
-    
+          //disable style css per evitare che si possa cliccare su altri quadrati quando l'utente ha vinto
+      cell.classList.toggle('disable');
       
    }
 
