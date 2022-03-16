@@ -4,9 +4,16 @@ console.log('JS OK!')
 // Consegna
 // creare una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range compreso tra 1 e 100
 // Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
+//step by step
+//1 generare 16 numeri casuali nello stesso range ( da 1 a totalCells) delle difficoltà scelta
+// I numeri nella lista delle bombe non possono essere duplicati.
+// creo un array vuoto in cui metterà le posizioni delle 16 bombe 
+//prendo una posizione random e verifico che non sia già stata usata. se è libera inserisco la posizione nell'array delle bombe
+//Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una b.
+//quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle
+//quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste
 
 
-//correzione live + bonus
 
 const buttonEasy = document.getElementById('easy');
 
