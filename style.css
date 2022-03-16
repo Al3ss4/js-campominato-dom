@@ -25,6 +25,9 @@
       background-color: aquamarine;
   }
 
+  .bg-red{
+    background-color: red;
+  }
   .cell {
     border: 2px solid white;
     color: black;
@@ -47,3 +50,4 @@
     width: calc(100% / 10);
     height: calc(100% / 10);
   }
+ 

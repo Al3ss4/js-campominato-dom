@@ -24,14 +24,72 @@ const buttonHard = document.getElementById('hard');
 
 
 
-buttonEasy.addEventListener('click', ()=> createElementsInGrid(100, 'easy'));
+buttonEasy.addEventListener('click', ()=> startGame(100, 'easy'));
 
-buttonMedium.addEventListener('click', ()=> createElementsInGrid(81, 'medium'));
-
-
-buttonHard.addEventListener('click', ()=> createElementsInGrid(49, 'hard'));
+buttonMedium.addEventListener('click', ()=> startGame(81, 'medium'));
 
 
+buttonHard.addEventListener('click', ()=> startGame(49, 'hard'));
+
+
+let contatore = 0;
+
+// stesso nome della funzione createElementsInGrid, ma hanno due valori differenti perchè vivono in due funzioni differenti. Vivono all'interno della funzione.
+function startGame (totalCells, className){
+   const bombPositions = generateBombs(totalCells);
+
+   //console.log(bombPositions);
+   createElementsInGrid(totalCells, className);
+
+   // inserisco una funzione che mi permette di far cambiare il bg delle celle al click
+ 
+
+   for ( let i=1 ; i<= totalCells; i++){
+       
+      //console.log(cell);
+      let id= 'cell-' + i;
+      let cell = document.getElementById(id);
+      //console.log(id);
+      //console.log(cell);
+      cell.addEventListener('click', function(event){
+         //console.log(cell);
+         const isBomb = bombPositions.includes(i);
+          if(isBomb){
+             
+             endGame(bombPositions, totalCells);
+          }else{
+// aggiungo +1 ogni volta che si verifica la condizione di !isBomb
+             contatore += 1;
+             
+
+             cell.classList.add('bg-celeste');
+//aggiungo un if che va a verificare se il contatore è uguale a (numero di celle - bombposition.length (16)). se la condizione è vera allora l'utente avrà vinto e verrà comunicato il punteggio!
+             if(contatore ===(totalCells-bombPositions.length)){
+                alert('Hai vinto, hai totalizzato : ' + contatore + 'punti!');
+                
+             }
+          }
+         
+      });
+   }
+}
+// inizio la funzione che detta le condizioni della fine del gioco qualora l'utente perda
+function endGame (bombPositions, totalCells){
+   for ( let i= 0; i < bombPositions.length; i++){
+       //tutte le bombe si colorano di rosso quando l'utente cliccherà su una bomba. Partirà prima un alert che gli comunicherà la sconfitta con il punteggio totale
+      let cell = document.getElementById('cell-' + bombPositions[i]);
+      cell.classList.add('bg-red');
+   }
+   alert('Hai perso, hai totalizzato : ' +  contatore + ' punti!');
+
+   for ( let i=1 ; i<= totalCells; i++){
+      let id= 'cell-' + i;
+      let cell = document.getElementById(id);
+    
+      
+   }
+
+}
 
 // generare 16 numeri casuali da 1 a totalCells
 function generateBombs(max){
@@ -76,12 +134,9 @@ function createElementsInGrid(totalCells, className){
     
     // inserisco all'interno delle celle i numeri, +1 lo inserisco così da non farlo partire da 0 ma da 1
         cell.innerText = (i +1);
+        cell.id = 'cell-' + (i+1);
     
     
-    // inserisco una funzione che mi permette di far cambiare il bg delle celle al click
-        cell.addEventListener('click', function(event) {
-            cell.classList.toggle('bg-celeste')
-        })
     }
 
 }
