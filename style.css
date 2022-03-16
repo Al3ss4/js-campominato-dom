@@ -1,0 +1,49 @@
+/* generics */
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  h1{
+      text-align: center;
+      margin-top: 30px;
+    }
+ /* / generics */
+
+ #grid {
+    width: 700px;
+    height: 700px;
+    margin: 40px auto;
+    background-color: rgb(255, 127, 227);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .bg-celeste{
+      background-color: aquamarine;
+  }
+
+  .cell {
+    border: 2px solid white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cell.hard{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+  }
+
+  .cell.medium{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+  }
+  
+  .cell.easy{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+  }
