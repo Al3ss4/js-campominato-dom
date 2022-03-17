@@ -61,7 +61,7 @@ function startGame (totalCells, className){
 // aggiungo +1 ogni volta che si verifica la condizione di !isBomb
              contatore += 1;
              cell.classList.add('disable');
-console.log(contatore);
+//console.log(contatore);
              cell.classList.add('bg-celeste');
 //aggiungo un if che va a verificare se il contatore è uguale a (numero di celle - bombposition.length (16)). se la condizione è vera allora l'utente avrà vinto e verrà comunicato il punteggio!
              if(contatore ===(totalCells-bombPositions.length)){
