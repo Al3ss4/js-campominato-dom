@@ -60,8 +60,8 @@ function startGame (totalCells, className){
           }else{
 // aggiungo +1 ogni volta che si verifica la condizione di !isBomb
              contatore += 1;
-             
-
+             cell.classList.add('disable');
+console.log(contatore);
              cell.classList.add('bg-celeste');
 //aggiungo un if che va a verificare se il contatore è uguale a (numero di celle - bombposition.length (16)). se la condizione è vera allora l'utente avrà vinto e verrà comunicato il punteggio!
              if(contatore ===(totalCells-bombPositions.length)){
@@ -82,7 +82,7 @@ function endGame (bombPositions, totalCells){
       cell.classList.add('bg-red');
    }
    alert('Hai perso, hai totalizzato : ' +  contatore + ' punti!');
-
+    
    for ( let i=1 ; i<= totalCells; i++){
       let id= 'cell-' + i;
       let cell = document.getElementById(id);
@@ -90,7 +90,7 @@ function endGame (bombPositions, totalCells){
       cell.classList.toggle('disable');
       
    }
-
+   
 }
 
 // generare 16 numeri casuali da 1 a totalCells
@@ -115,7 +115,7 @@ function generateBombs(max){
 
 function createElementsInGrid(totalCells, className){
     const grid = document.getElementById ('grid');
-
+    contatore= 0;
     grid.innerHTML='';
     createCell = () =>{
         const item = document.createElement('div');
